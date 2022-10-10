@@ -2,7 +2,7 @@
 	import { onMount, onDestroy } from "svelte";
 	import logo from "$lib/images/deprotect_logo.svg";
 	import usdt_logo from "$lib/images/tether-usdt-logo.svg";
-	import { addTokenToWallet, connectMetamask, getProvider, getSigner } from "$lib/ethers/eth";
+	import { getProvider, getSigner } from "$lib/ethers/eth";
 	import { numberToCoin } from "@deprotect/smart-contracts";
 	import BarLoading from "$lib/components/BarLoading.svelte";
 	import { EthereumEvent, type TEthereumEvent } from "$lib/ethers/ethereum";

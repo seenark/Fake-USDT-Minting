@@ -25,7 +25,7 @@ export const publicKey = derived<typeof signer_w, string | null>(signer_w, ($sig
 
 export const usdtContract = derived<
 	typeof signer_w,
-	{ contract: TetherUSD; name: EContractName } | null
+	Awaited<ReturnType<typeof getAllContracts>>["FakeUSDTContract"] | null
 >(signer_w, ($signer, set) => {
 	(async () => {
 		if (!$signer) {
@@ -34,7 +34,7 @@ export const usdtContract = derived<
 		}
 		const allContacts = await getAllContracts($signer, "mumbai");
 		console.log("setup all contracts", allContacts);
-		set(allContacts.USDTContract);
+		set(allContacts.FakeUSDTContract);
 	})();
 });
 

@@ -33,34 +33,34 @@ export function getSigner(provider: providers.Web3Provider) {
 	return signer;
 }
 
-export async function isMetamaskUnlocked() {
-	return await (window as any).ethereum._metamask.isUnlocked();
-}
+// export async function isMetamaskUnlocked() {
+// 	return await (window as any).ethereum._metamask.isUnlocked();
+// }
 
-export async function addTokenToWallet(
-	address: string,
-	symbol: string,
-	decimal: number,
-	tokenLogoUrl = "",
-	type: "ERC20" | "ERC721" = "ERC20"
-) {
-	const { ethereum } = window as any;
-	const wasAdded: boolean = ethereum.request({
-		method: "wallet_watchAsset",
-		params: {
-			type: type, // Initially only supports ERC20, but eventually more!
-			options: {
-				address: address, // The address that the token is at.
-				symbol: symbol, // A ticker symbol or shorthand, up to 5 chars.
-				decimals: decimal, // The number of decimals in the token
-				image: tokenLogoUrl // A string url of the token logo
-			}
-		}
-	});
+// export async function addTokenToWallet(
+// 	address: string,
+// 	symbol: string,
+// 	decimal: number,
+// 	tokenLogoUrl = "",
+// 	type: "ERC20" | "ERC721" = "ERC20"
+// ) {
+// 	const { ethereum } = window as any;
+// 	const wasAdded: boolean = ethereum.request({
+// 		method: "wallet_watchAsset",
+// 		params: {
+// 			type: type, // Initially only supports ERC20, but eventually more!
+// 			options: {
+// 				address: address, // The address that the token is at.
+// 				symbol: symbol, // A ticker symbol or shorthand, up to 5 chars.
+// 				decimals: decimal, // The number of decimals in the token
+// 				image: tokenLogoUrl // A string url of the token logo
+// 			}
+// 		}
+// 	});
 
-	if (wasAdded) {
-		console.log("Thanks for your interest!");
-	} else {
-		console.log("Add error");
-	}
-}
+// 	if (wasAdded) {
+// 		console.log("Thanks for your interest!");
+// 	} else {
+// 		console.log("Add error");
+// 	}
+// }
