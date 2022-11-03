@@ -3,7 +3,6 @@
 	import logo from "$lib/images/deprotect_logo.svg";
 	import usdt_logo from "$lib/images/tether-usdt-logo.svg";
 	import { getProvider, getSigner } from "$lib/ethers/eth";
-	import { numberToCoin } from "@deprotect/smart-contracts";
 	import BarLoading from "$lib/components/BarLoading.svelte";
 	import { EthereumEvent, type TEthereumEvent } from "$lib/ethers/ethereum";
 	import WrongNetwork from "$lib/components/WrongNetwork.svelte";
@@ -20,6 +19,7 @@
 	} from "$lib/store/ethers.store";
 	import MetamaskBtn from "$lib/components/MetamaskBtn.svelte";
 	import ConnectMetamaskBtn from "$lib/components/ConnectMetamaskBtn.svelte";
+	import "@aumstack/ethers-expanded";
 
 	let accountChangeEthereum: EthereumEvent<"accountsChanged"> | undefined = undefined;
 	let chainChangeEthereum: EthereumEvent<"chainChanged"> | undefined = undefined;
@@ -97,7 +97,7 @@
 		if ($publicKey && $usdtContract) {
 			try {
 				isSubmitting = true;
-				const amountBN = numberToCoin(amount);
+				const amountBN = amount.toErc20();
 				const tx = await $usdtContract.contract.mint($publicKey, amountBN);
 				await tx.wait();
 				alert(`minted hash: ${tx.hash}`);

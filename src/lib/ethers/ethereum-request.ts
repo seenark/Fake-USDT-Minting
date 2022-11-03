@@ -2,12 +2,12 @@ import type { providers } from "ethers";
 import type { AddEthereumChainParameter, WatchAssetParams } from "./metamask.type";
 import { networks } from "./network";
 
-type TWalletMethod =
-	| "eth_requestAccounts"
-	| "wallet_addEthereumChain"
-	| "wallet_switchEthereumChain"
-	| "wallet_watchAsset"
-	| "wallet_scanQRCode";
+// type TWalletMethod =
+// 	| "eth_requestAccounts"
+// 	| "wallet_addEthereumChain"
+// 	| "wallet_switchEthereumChain"
+// 	| "wallet_watchAsset"
+// 	| "wallet_scanQRCode";
 
 enum EWalletMethod {
 	addEthereumChain = "wallet_addEthereumChain",
